@@ -80,6 +80,16 @@ const RegisterModal = () => {
             <hr />
             <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=>{}} />
             <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=>{}} />
+            <div className="mt-4 font-light text-center text-neutral-500">
+                <div className="justify-center flex items-center gap-2 flow-row">
+                    <div>
+                        Already have an account
+                    </div>
+                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={registerModal.onClose}>
+                        Log in
+                    </div>
+                </div>
+            </div>
         </div>
     )
     return (
