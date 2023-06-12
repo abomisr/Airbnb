@@ -15,6 +15,7 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -82,8 +83,8 @@ const RegisterModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=>{}} />
-            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=>{}} />
+            <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=> signIn("google")} />
+            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=> signIn("github")} />
             <div className="mt-4 font-light text-center text-neutral-500">
                 <div className="justify-center flex items-center gap-2 flow-row">
                     <div>
