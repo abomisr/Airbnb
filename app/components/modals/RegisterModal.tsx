@@ -16,9 +16,12 @@ import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
+
     const [isLoading, setIsLoading] = useState(false)
 
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({
@@ -42,7 +45,6 @@ const RegisterModal = () => {
             .finally(() => {
                 setIsLoading(false);
             })
-
     }
 
     const bodyContent = (
@@ -80,17 +82,23 @@ const RegisterModal = () => {
         </div>
     )
 
+
+    const toggle = useCallback(() => {
+        registerModal.onClose()
+        loginModal.onOpen()
+    }, [registerModal, loginModal])
+    
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label="Continue with Google" icon={FcGoogle} onClick={()=> signIn("google")} />
-            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={()=> signIn("github")} />
+            <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => signIn("google")} />
+            <Button outline label="Continue with Github" icon={AiFillGithub} onClick={() => signIn("github")} />
             <div className="mt-4 font-light text-center text-neutral-500">
                 <div className="justify-center flex items-center gap-2 flow-row">
                     <div>
                         Already have an account
                     </div>
-                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={registerModal.onClose}>
+                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>
                         Log in
                     </div>
                 </div>
@@ -98,8 +106,8 @@ const RegisterModal = () => {
         </div>
     )
     return (
-        <Modal 
-        body={bodyContent} disabled={isLoading} isOpen={registerModal.isOpen} title="Register" footer={footerContent} actionLabel="Continue" onClose={registerModal.onClose} onSubmit={handleSubmit(onSubmit)} />
+        <Modal
+            body={bodyContent} disabled={isLoading} isOpen={registerModal.isOpen} title="Register" footer={footerContent} actionLabel="Continue" onClose={registerModal.onClose} onSubmit={handleSubmit(onSubmit)} />
     )
 }
 

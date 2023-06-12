@@ -11,6 +11,8 @@ import {
 } from "react-hook-form"
 
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../inputs/Input";
@@ -21,6 +23,7 @@ import { useRouter } from "next/navigation";
 const LoginModal = () => {
     const router = useRouter();
     const loginModal = useLoginModal();
+    const registerModal = useRegisterModal();
     const [isLoading, setIsLoading] = useState(false)
 
     const { register, handleSubmit, formState: { errors } } = useForm<FieldValues>({
@@ -82,6 +85,11 @@ const LoginModal = () => {
         </div>
     )
 
+    const toggle = useCallback(() => {
+        registerModal.onOpen()
+        loginModal.onClose()
+    }, [registerModal, loginModal])
+
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
@@ -92,7 +100,7 @@ const LoginModal = () => {
                     <div>
                         New to Airbnb?
                     </div>
-                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={loginModal.onClose}>
+                    <div className="text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>
                         Sign up
                     </div>
                 </div>
