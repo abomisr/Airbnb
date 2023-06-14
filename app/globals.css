@@ -17,3 +17,10 @@ html,body,:root{
   background: #eee;
   border-radius: 999px;
 }
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top{
+  z-index: 0 !important;
+}
