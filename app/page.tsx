@@ -24,6 +24,7 @@ export default async function Home({ searchParams }: HomeProps) {
     );
   }
 
+
   return (
     <ClientOnly>
       <Container>
