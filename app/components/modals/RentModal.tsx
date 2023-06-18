@@ -102,7 +102,7 @@ const RentModal = () => {
 
     let bodyContent = [
         (
-            <div className="flex flex-col gap-8">
+            <div key="CATEGORY" className="flex flex-col gap-8">
                 <Heading title="Which of these best describes your place?" subtitle='Pick a category' />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto">
                     {categories.map((item) => (
@@ -114,7 +114,7 @@ const RentModal = () => {
             </div>
         ),
         (
-            <div className='flex flex-col gap-8'>
+            <div key="LOCATION" className='flex flex-col gap-8'>
                 <Heading title='Where is your place located?' subtitle='Help guests find you!' />
                 <CountrySelect
                     onChange={(value) => setCustomValue("location", value)}
@@ -126,7 +126,7 @@ const RentModal = () => {
             </div>
         ),
         (
-            <div className="flex flex-col gap-8">
+            <div key="INFO" className="flex flex-col gap-8">
                 <Heading
                     title="Share some basics about your place"
                     subtitle="What amenitis do you have?"
@@ -154,7 +154,7 @@ const RentModal = () => {
             </div>
         ),
         (
-            <div className="flex flex-col gap-8">
+            <div key="IMAGES" className="flex flex-col gap-8">
         <Heading
           title="Add a photo of your place"
           subtitle="Show guests what your place looks like!"
@@ -166,7 +166,7 @@ const RentModal = () => {
       </div>
         ),
         (
-            <div className="flex flex-col gap-8">
+            <div key="DESCRIPTION" className="flex flex-col gap-8">
                 <Heading 
                     title="How would you describe your place?"
                     subtitle="Short and sweet works best!"
@@ -191,7 +191,7 @@ const RentModal = () => {
             </div>
         ),
         (
-            <div className="flex flex-col gap-8">
+            <div key="PRICE" className="flex flex-col gap-8">
                 <Heading
                     title='How much do you charge per night?'
                     subtitle='Now set your price!'
