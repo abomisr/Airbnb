@@ -7,8 +7,9 @@ interface IParams {
 }
 
 export default async function getReservations(
-  params: IParams
+  params?: IParams
 ) {
+  if(!params) return null
   try {
     const { listingId, userId, authorId } = params;
 

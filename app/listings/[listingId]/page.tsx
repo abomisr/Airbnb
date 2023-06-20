@@ -27,7 +27,7 @@ const page = async ({params}:{params:IParams}) => {
       <ListingClient
         listing={listing}
         currentUser={currentUser}
-        reservations={reservations}
+        reservations={reservations || []}
       />
     </ClientOnly>
   )

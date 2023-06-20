@@ -23,6 +23,8 @@ const ReservationsPage = async () => {
 
   const reservations = await getReservations({ authorId: currentUser.id });
 
+  if(!reservations) return null
+
   if (reservations.length === 0) {
     return (
       <ClientOnly>

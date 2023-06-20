@@ -20,7 +20,7 @@ const Button:React.FC<ButtonProps> = ({
     icon: Icon
 }) => {
   return (
-    <button onClick={onClick} className={`
+    <button onClick={onClick} disabled={disabled} className={`
         relative
         disabled:opacity-70
         disabled:cursor-not-allowed
